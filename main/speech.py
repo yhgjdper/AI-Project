@@ -9,10 +9,9 @@ def speak(say):
     playsound('tts.mp3')
     os.remove('tts.mp3')
 
-
-r = sr.Recognizer()
-m = sr.Microphone()
 def speech_input():
+    r = sr.Recognizer()
+    m = sr.Microphone()
     try:
         speak("A moment of silence, please...")
         with m as source: r.adjust_for_ambient_noise(source)
@@ -20,7 +19,7 @@ def speech_input():
         speak("Say something")
         with m as source: 
             audio = r.listen(source)
-        speak("Got it! Now to recognize it...")
+        speak("Got it! Now to recognize it")
         try:
             # recognize speech using Google Speech Recognition
             value = r.recognize_google(audio)
@@ -38,4 +37,4 @@ def speech_input():
             print("Couldn't request results from Google Speech Recognition service; {0}".format(e))
     except KeyboardInterrupt:
         pass
-speak(speech_input())
+
