@@ -1,29 +1,24 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var multer = require('multer');
-var upload = multer();
-var app = express();
+const content = require('fs').readFileSync(__dirname + '/index.html', 'utf8');
 
-app.get('/', function(req, res){
-   res.render('form');
+const httpServer = require('http').createServer((req, res) => {
+  // serve the index.html file
+  res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Content-Length', Buffer.byteLength(content));
+  res.end(content);
 });
 
-app.set('view engine', 'pug');
-app.set('views', './views');
+const io = require('socket.io')(httpServer);
 
-// for parsing application/json
-app.use(bodyParser.json()); 
-
-// for parsing application/xwww-
-app.use(bodyParser.urlencoded({ extended: true })); 
-//form-urlencoded
-
-// for parsing multipart/form-data
-app.use(upload.array()); 
-app.use(express.static('public'));
-
-app.post('/', function(req, res){
-   console.log(req.body);
-   res.send("recieved your request!");
+io.on('connect', socket => {
+  console.log('connect');
 });
-app.listen(3000);
+
+httpServer.listen(3000, () => {
+  console.log('go to http://localhost:3000');
+});
+
+io.on('connect', socket => {
+   socket.on('hey', data => {
+     console.log('hey', data);
+   });
+});

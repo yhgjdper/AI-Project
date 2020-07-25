@@ -1,103 +1,77 @@
 <!DOCTYPE html>
 
 <style>
-	.text {
-    	position: absolute;
-        top: 5%;
-        left: 50%;
-        font-size: 50px;
-        transform: translate(-50%, -50%);
+    .button {
+        width: 100px;
+        height: 100px;
     }
-    body {
-        background-color: powderblue;
+    .vertical-center {
+        position: absolute;
+        left: 50%;
     }
     .container {
         height: 200px;
         position: relative;
         border: 3px solid white;
     }
-
-    .center {
-        margin: 0;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-    }
-    .button {
-        width: 100px;
-        height: 100px;
-    }
-    .settings {
-        position: absolute;
-        top: 50%;
-        left: 35%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-    }
-    .settingsImage {
-        transform: scale(0.25, 0.25);
-    }
-    .vertical-center {
-        position: absolute;
-        left: 50%;
-    }
 </style>
 
-<html>
-    <head>
-        <title>Page Title</title>
-    </head>
-    <body>
-        <div>
-            <div>
-                <div class="container">
-                    <h1 class="text">AI Interface</h1>
-                </div>
-            </div>
-            <div>
-                <div class="container">
-                    <div class="center">
-                        <script>
-                            var talking = false;
-                            function changeState() {
-                                if (talking == false) {
-                                    talking = true;
-                                    document.getElementById("talkButton").innerHTML = "Listening...";
-                                }
-                                else if (talking == true) {
-                                    talking = false;
-                                    document.getElementById("talkButton").innerHTML = "Start Talking";
-                                }
-                            }
-                        </script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minimal working example</title>
+</head>
+<body>
+    <ul id="events"></ul>
 
-                        <button class="button" id="talkButton" onclick="changeState()"></button>
+    <script src="/socket.io/socket.io.js"></script>
 
-                        <script>
-                            if (talking == false) {
-                                document.getElementById("talkButton").innerHTML = "Start Talking";
-                            }
-                            if (talking == true) {
-                                document.getElementById("talkButton").innerHTML = "Listening...";
-                            }
-                        </script>
-                    </div>
-                    <div class="settings">
-                        <nav>
-                            <a href="settings.html">
-                                <img src="images/settings.png" style="width:100%" class="settingsImage">
-                            </a>
-                        </nav>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h1 class="vertical-center" id="test"></h1>
-                    </div>
-                </div>
-            </div>
+    <div class="container">
+        <div class="vertical-center">
+            <script>
+                var talking = false;
+                function changeState() {
+                    if (talking == false) {
+                        talking = true;
+                        document.getElementById("talkButton").innerHTML = "Listening...";
+                    }
+                    else if (talking == true) {
+                        talking = false;
+                        document.getElementById("talkButton").innerHTML = "Start Talking";
+                    }
+                }
+            </script>
+
+            <button class="button" id="talkButton" onclick="changeState()"></button>
+
+            <script>
+                if (talking == false) {
+                    document.getElementById("talkButton").innerHTML = "Start Talking";
+                }
+                if (talking == true) {
+                    document.getElementById("talkButton").innerHTML = "Listening...";
+                }
+            </script>
         </div>
-    </body>
-</html> 
+    </div>
+
+    <script>
+        const $events = document.getElementById('events');
+
+        const newItem = (content) => {
+          const item = document.createElement('li');
+          item.innerText = content;
+          return item;
+        };
+
+        const socket = io();
+
+        socket.on('connect', () => {
+            $events.appendChild(newItem('connect'));
+        });
+
+    
+        
+    </script>
+</body>
+</html>
