@@ -1,5 +1,6 @@
 import subprocess
 import os
+
 def tinput(command):
     if command[:5] == "open ":
         command1 = command[5:]
