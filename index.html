@@ -28,7 +28,7 @@
 <html>
     <head>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
-
+        <!--
         <script>
 
             $(function() {
@@ -38,9 +38,9 @@
             var options_input = ["speech", "text"];
             var options_output = ["speech", "text"];
             var options_browsers = ["chrome", "firefox"];
-
+            
             $.getJSON('settings.json', function(data) {
-                $.each(data.settings, function(i, f) {
+                $.each(data, function(i, f) {
                     var tblRow = "<tr><td><form><select name='options'><option value='speech'>speech</option><option value='text'>text</option></select></form>" + f.input + "</td>" +
                     "<td><form><select name='options'><option value='speech'>speech</option><option value='text'>text</option></select></form>" + f.output + "</td>" + 
                     "<td><form><select name='options'><option value='speech'>chrome</option><option value='text'>firefox</option></select></form>" + f.browser + "</td></tr>"
@@ -51,6 +51,7 @@
 
             });
         </script>
+        -->
     </head>
 
     <body>
@@ -91,11 +92,48 @@
                             <th>Browser</th>
                         </thead>
                         <tbody>
-
+                            <tr>
+                                <td>
+                                    <form>
+                                        <select name='options'>
+                                            <option value='speech'>speech</option>
+                                            <option value='text'>text</option>
+                                        </select>
+                                    </form>
+                                </td>
+                                <form>
+                                    <select name='options'>
+                                        <option value='speech'>speech</option>
+                                        <option value='text'>text</option>
+                                    </select>
+                                </form>
+                            </td>
+                                <td>
+                                    <form>
+                                        <select name='options'>
+                                            <option value='speech'>speech</option>
+                                            <option value='text'>text</option>
+                                        </select>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form>
+                                        <select name='options'>
+                                            <option value='speech'>chrome</option>
+                                            <option value='text'>firefox</option>
+                                        </select>
+                                    </form>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+        </div>
+        <div class="center">
+            
+            <button class="button" id="update" onclick="changeSettings()">Update Settings</button>
+
         </div>
 
     </body>

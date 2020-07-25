@@ -1,20 +1,17 @@
 import subprocess
 import os
-<<<<<<< HEAD
-=======
 import pyautogui
 import webbrowser
 import time
->>>>>>> ae948d2852e278e09de6b7d6c786f44eb405a3e2
 
 def tinput(command):
-    if command[:5] == "open " or command[:5] == "Open ":
+    if command[:5].lower() == "open ":
         command1 = command[5:]
         process = subprocess.Popen(['explorer', command1], stdout=subprocess.PIPE, universal_newlines=True)
-    elif command[:6] == "close " or command[:6] == "Close ":
+    elif command[:6].lower() == "close ":
         command1 = command[6:]
         os.system(f"TASKKILL /F /IM {command1}.exe")
-    elif command[:7] == "google " or command[:7] == "Google ":
+    elif command[:7].lower() == "google ":
         command1 = command[7:]
 
         webbrowser.open('https://google.com/?q=' + command1)

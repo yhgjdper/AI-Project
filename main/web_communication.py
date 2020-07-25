@@ -1,7 +1,9 @@
-import requests
-import urllib
+import json
 
-url = "localhost:3000"
-r = requests.get(url)
-text = r.text
-print(text)
+def check_settings():
+    with open('settings.json') as json_file:
+        data = json.load(json_file)
+        for p in data:
+            print(data[p])
+
+check_settings()
