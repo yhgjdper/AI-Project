@@ -18,4 +18,4 @@ def tinput(command):
         time.sleep(1)
         pyautogui.press('enter')
 
-tinput(command = input("What do you want to do?\n"))
+#tinput(command = input("What do you want to do?\n"))

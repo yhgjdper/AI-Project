@@ -1,9 +1,8 @@
 import json
 
-def check_settings():
+def check_settings(setting):
     with open('settings.json') as json_file:
         data = json.load(json_file)
-        for p in data:
-            print(data[p])
+        return(data[setting])
 
-check_settings()
+print(check_settings('input'))
