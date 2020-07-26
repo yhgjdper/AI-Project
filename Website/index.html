@@ -95,27 +95,30 @@
                             <tr>
                                 <td>
                                     
-                                    <form>
-                                        <select name='options'>
+                                    <form action="getJson" method="get">
+                                        <select class="selectpicker" name='selectpicker' id='inputOption'>
                                             <option value='speech'>speech</option>
                                             <option value='text'>text</option>
                                         </select>
+                                        <input type="submit" />
                                     </form>
                                 </td>
                                 <td>
-                                    <form>
-                                        <select name='options'>
+                                    <form action="getJson" method="get">
+                                        <select class="selectpicker" name='selectpicker' id='outputOption'>
                                             <option value='speech'>speech</option>
                                             <option value='text'>text</option>
                                         </select>
+                                        <input type="submit" />
                                     </form>
                                 </td>
                                 <td>
-                                    <form>
-                                        <select name='options'>
+                                    <form action="getJson" method="get">
+                                        <select class="selectpicker" name='selectpicker' id='browserOption'>
                                             <option value='speech'>chrome</option>
                                             <option value='text'>firefox</option>
                                         </select>
+                                        <input type="submit" />
                                     </form>
                                 </td>
                             </tr>
@@ -124,11 +127,26 @@
                 </div>
             </div>
         </div>
+
+        <script type="text/javascript">
+            function getOptions() {
+                inputElement = document.querySelector('#inputOption');
+                inputOutput = inputElement.value;
+
+                outputElement = document.querySelector('#outputOption');
+                outputOutput = outputElement.value;
+
+                browserElement = document.querySelector('#browserOption');
+                browserOutput = browserElement.value;
+            }
+        </script>
+
         <div class="center">
             
-            <button class="button" id="update" onclick="changeSettings()">Update Settings</button>
+            <button class="button" id="update" onclick="getOptions()">Update Settings</button>
 
         </div>
+    
 
     </body>
 </html>

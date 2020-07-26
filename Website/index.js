@@ -1,7 +1,33 @@
 'use strict';
 
 const fs = require('fs');
+var bodyParser = require('body-parser')
 
+var express = require('express'),
+    app = express();
+var http = require('http');
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+const PORT=8080; 
+
+// as only one page can use res.sendfile to render the page which will contain the drop   downs
+
+
+app.get('/', function(req, res){
+    res.sendfile('./website/index.html');
+});
+
+app.get('/getJson', function (req, res) {
+    
+    // If it's not showing up, just use req.body to see what is actually being passed.
+    console.log(req.body.selectpicker);
+});
+
+app.listen(3000); 
+/*
 let setting = {
     input: "speech",
     output: "speech",
@@ -29,4 +55,5 @@ fs.readFile('./website/index.html', function (err, html) {
         response.end();  
     }).listen(PORT);
 });
+*/
 console.log('YEP');
