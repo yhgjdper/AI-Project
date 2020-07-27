@@ -11,16 +11,13 @@ def tokenize(sentence):
     for letter in sentence:
         place += 1
         if letter != " ":
-            aWord = aWord + letter
+            aWord = aWord + letter.lower()
         if letter == " " or place == len(sentence):
             aList.append(aWord)
             aWord = ""  
     return aList
 
 def tinput(command):
-    words_list = tokenize(command)
-
-
 
     if command[:5].lower() == "open ":
         command1 = command[5:]
@@ -36,3 +33,8 @@ def tinput(command):
         pyautogui.press('enter')
 
 #tinput(command = input("What do you want to do?\n"))
+def process_input(input):
+    words_list = tokenize(input)
+    #if words_list[0]
+
+print(tokenize("THIS is a TEST"))

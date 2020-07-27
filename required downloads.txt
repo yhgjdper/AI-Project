@@ -8,8 +8,8 @@ Windows:
     ExpressJS:
         Go to current directory and run 'node init'
         Run 'npm i express --save'
-    Nodemon:
-        Go to current directory and run 'npm install -g nodemon'
+    File System:
+        Run 'npm i fs' in current directory
 
     PyAudio:
         Go to https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio
@@ -19,4 +19,8 @@ Windows:
         'pip install gtts'
     Playsound:
         'pip install playsound'
+    Speech-recognition:
+        'pip install SpeechRecognition'
+    pyautogui:
+        'pip install PyAutoGUI'
     

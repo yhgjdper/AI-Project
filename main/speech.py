@@ -39,10 +39,5 @@ def speech_input():
     except KeyboardInterrupt:
         pass
 
-def talk_toggled():
-    with open('startTalking.json') as json_file:
-        data = json.load(json_file)
-        if data['toggleTalking'] == 'on':
-            return True
-        return False
+
 

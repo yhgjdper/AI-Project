@@ -1,6 +1,6 @@
-from speech import speak, speech_input, talk_toggled
+from speech import speak, speech_input
 from text_input import tinput
-from web_communication import check_settings
+from web_communication import check_settings, talk_toggled
 import time
 
 ON = True
