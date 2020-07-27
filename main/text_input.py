@@ -35,6 +35,6 @@ def tinput(command):
 #tinput(command = input("What do you want to do?\n"))
 def process_input(input):
     words_list = tokenize(input)
-    #if words_list[0]
-
-print(tokenize("THIS is a TEST"))
+    
+    if words_list[0] == 'open':
+        pass

@@ -11,3 +11,8 @@ def talk_toggled():
         if data['toggleTalking'] == 'on':
             return True
         return False
+
+def talk_toggle_off():
+    f = open('startTalking.json', 'w')
+    f.write('{"toggleTalking":"off"}')
+    f.close()

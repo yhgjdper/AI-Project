@@ -25,15 +25,7 @@ app.get('/', function(req, res){
     res.sendfile('./website/index.html');
 });
 
-/*
-app.get('/getJson', function (req, res) {
-    
-    // If it's not showing up, just use req.body to see what is actually being passed.
-    //console.log(req.body.selectpicker);
-    console.log(util.inspect(req.body, false, null));
-    
-});
-*/
+
 let inputType = 'speech'
 let outputType = 'speech'
 let browserType = 'chrome'
