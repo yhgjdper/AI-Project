@@ -2,6 +2,7 @@ from gtts import gTTS
 from playsound import playsound
 import os
 import speech_recognition as sr
+import json
 
 def speak(say):
     tts = gTTS(say)
@@ -37,4 +38,13 @@ def speech_input():
             print("Couldn't request results from Google Speech Recognition service; {0}".format(e))
     except KeyboardInterrupt:
         pass
+
+def talk_toggled():
+    with open('startTalking.json') as json_file:
+        data = json.load(json_file)
+        if data['toggleTalking'] == 'on':
+            return True
+        return False
+
+print(talk_toggled())
 

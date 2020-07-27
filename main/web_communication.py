@@ -5,4 +5,3 @@ def check_settings(setting):
         data = json.load(json_file)
         return(data[setting])
 
-print(check_settings('input'))

@@ -4,7 +4,24 @@ import pyautogui
 import webbrowser
 import time
 
+def tokenize(sentence):
+    aList = []
+    aWord = ""
+    place = 0
+    for letter in sentence:
+        place += 1
+        if letter != " ":
+            aWord = aWord + letter
+        if letter == " " or place == len(sentence):
+            aList.append(aWord)
+            aWord = ""  
+    return aList
+
 def tinput(command):
+    words_list = tokenize(command)
+
+
+
     if command[:5].lower() == "open ":
         command1 = command[5:]
         process = subprocess.Popen(['explorer', command1], stdout=subprocess.PIPE, universal_newlines=True)

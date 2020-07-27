@@ -56,30 +56,9 @@
 
     <body>
         <div class=center>
-            <script>
-                var talking = false;
-                function changeState() {
-                    if (talking == false) {
-                        talking = true;
-                        document.getElementById("talkButton").innerHTML = "Listening...";
-                    }
-                    else if (talking == true) {
-                        talking = false;
-                        document.getElementById("talkButton").innerHTML = "Start Talking";
-                    }
-                }
-            </script>
-
-            <button class="button" id="talkButton" onclick="changeState()"></button>
-
-            <script>
-                if (talking == false) {
-                    document.getElementById("talkButton").innerHTML = "Start Talking";
-                }
-                if (talking == true) {
-                    document.getElementById("talkButton").innerHTML = "Listening...";
-                }
-            </script>
+            <form action="/startTalking" method="post">
+                <input class="button" type="submit" name="talkButton" value="toggle" />
+            </form>
         </div>
         
         <div class="continear">
@@ -95,28 +74,35 @@
                             <tr>
                                 <td>
                                     
-                                    <form action="getJson" method="get">
-                                        <select class="selectpicker" name='selectpicker' id='inputOption'>
-                                            <option value='speech'>speech</option>
-                                            <option value='text'>text</option>
+                                    <form action="/getResults" method="post">
+                                        <select class="selectpicker" name='input' id='inputOption' onchange="getOptions();">
+                                            <optgroup label="Select Method of Input">
+                                                <option name="speech" value='speech'>speech</option>
+                                                <option name="text" value='text'>text</option>
+                                            </optgroup>
+                                        </select>
+                                        <input type="submit" value="submit" />
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="/getResults" method="post">
+                                        <select class="selectpicker" name='output' id='outputOption' onchange="getOptions();">
+                                            <optgroup label="Select Method of Output">
+                                                <option name="speech" value='speech'>speech</option>
+                                                <option name="text" value='text'>text</option>
+                                            </optgroup>
+                                            
                                         </select>
                                         <input type="submit" />
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="getJson" method="get">
-                                        <select class="selectpicker" name='selectpicker' id='outputOption'>
-                                            <option value='speech'>speech</option>
-                                            <option value='text'>text</option>
-                                        </select>
-                                        <input type="submit" />
-                                    </form>
-                                </td>
-                                <td>
-                                    <form action="getJson" method="get">
-                                        <select class="selectpicker" name='selectpicker' id='browserOption'>
-                                            <option value='speech'>chrome</option>
-                                            <option value='text'>firefox</option>
+                                    <form action="/getResults" method="post">
+                                        <select class="selectpicker" name='browser' id='browserOption' onchange="write_to_settings();">
+                                            <optgroup label="Select Method of Browsing">
+                                                <option name="chrome" value='chrome'>chrome</option>
+                                                <option name="firefox" value='firefox'>firefox</option>
+                                            </optgroup>     
                                         </select>
                                         <input type="submit" />
                                     </form>
@@ -130,23 +116,21 @@
 
         <script type="text/javascript">
             function getOptions() {
-                inputElement = document.querySelector('#inputOption');
-                inputOutput = inputElement.value;
+                inputElement = document.getElementById('inputOption').value;
+                //inputOutput = inputElement.value;
 
-                outputElement = document.querySelector('#outputOption');
-                outputOutput = outputElement.value;
+                outputElement = document.getElementById('outputOption').value;
+                //outputOutput = outputElement.value;
 
-                browserElement = document.querySelector('#browserOption');
-                browserOutput = browserElement.value;
+                browserElement = document.getElementById('browserOption').value;
+                //browserOutput = browserElement.value;
+
+                console.log(inputElement);
+                console.log(outputElement);
+                console.log(browserElement);
             }
-        </script>
-
-        <div class="center">
             
-            <button class="button" id="update" onclick="getOptions()">Update Settings</button>
-
-        </div>
-    
+        </script>   
 
     </body>
 </html>
