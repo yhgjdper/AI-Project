@@ -46,5 +46,3 @@ def talk_toggled():
             return True
         return False
 
-print(talk_toggled())
-
