@@ -75,36 +75,36 @@
                                 <td>
                                     
                                     <form action="/getResults" method="post">
-                                        <select class="selectpicker" name='input' id='inputOption' onchange="getOptions();">
+                                        <select class="selectpicker" name='input' id='inputOption' onchange="window.stop();">
                                             <optgroup label="Select Method of Input">
                                                 <option name="speech" value='speech'>speech</option>
                                                 <option name="text" value='text'>text</option>
                                             </optgroup>
                                         </select>
-                                        <input type="submit" value="submit" />
+                                        <input type="submit" value="submit" onclick="window.stop();"/>
                                     </form>
                                 </td>
                                 <td>
                                     <form action="/getResults" method="post">
-                                        <select class="selectpicker" name='output' id='outputOption' onchange="getOptions();">
+                                        <select class="selectpicker" name='output' id='outputOption' onchange="window.stop();">
                                             <optgroup label="Select Method of Output">
                                                 <option name="speech" value='speech'>speech</option>
                                                 <option name="text" value='text'>text</option>
                                             </optgroup>
                                             
                                         </select>
-                                        <input type="submit" />
+                                        <input type="submit" onclick="window.stop();"/>
                                     </form>
                                 </td>
                                 <td>
                                     <form action="/getResults" method="post">
-                                        <select class="selectpicker" name='browser' id='browserOption' onchange="write_to_settings();">
+                                        <select class="selectpicker" name='browser' id='browserOption' onchange="window.stop();">
                                             <optgroup label="Select Method of Browsing">
                                                 <option name="chrome" value='chrome'>chrome</option>
                                                 <option name="firefox" value='firefox'>firefox</option>
                                             </optgroup>     
                                         </select>
-                                        <input type="submit" />
+                                        <input type="submit" onclick="window.stop();"/>
                                     </form>
                                 </td>
                             </tr>

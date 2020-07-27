@@ -54,7 +54,7 @@ app.post('/getResults', function(req, res) {
         if (err) throw err;
         console.log('Data written to file');
     });
-    res.redirect('/')
+    //res.redirect('/')
 })
 
 app.post('/startTalking', function(req, res) {
